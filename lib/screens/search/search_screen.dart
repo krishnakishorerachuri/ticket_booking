@@ -30,7 +30,7 @@ class SearchScreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          AppTicketTabs(),
+          AppTicketTabs(firstTabText: "Airline tickets", secondTabText: "Hotels",),
           const SizedBox(
             height: 20,
           ),
