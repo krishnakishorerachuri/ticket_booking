@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ticket_booking/base/res/styles/app_styles.dart';
 import 'package:ticket_booking/base/utils/app_json.dart';
 
+import '../search/widgets/expanded_widget.dart';
+
 class HotelDetailView extends StatefulWidget {
   const HotelDetailView({super.key});
 
@@ -80,11 +82,11 @@ class _HotelDetailViewState extends State<HotelDetailView> {
           ),
           SliverList(
               delegate: SliverChildListDelegate([
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(16.0),
               child: ExpandedTextWidget(
-                text:
-                    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+                text:  hotelList[index]["detail"]
+
               ),
             ),
             const Padding(
@@ -93,16 +95,16 @@ class _HotelDetailViewState extends State<HotelDetailView> {
                   "More Images",
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 )),
-            Container(
+            SizedBox(
               height: 200,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
+                  itemCount: hotelList[index]["images"].length,
+                  itemBuilder: (context, imagesindex) {
                     return Container(
                         margin: EdgeInsets.all(8),
                         color: Colors.red,
-                        child: Image.network("https://placehold.co/200x100"));
+                        child: Image.asset("assets/images/${hotelList[index]["images"][imagesindex]}"));
                   }),
             )
           ]))
@@ -112,11 +114,4 @@ class _HotelDetailViewState extends State<HotelDetailView> {
   }
 }
 
-class ExpandedTextWidget extends StatelessWidget {
-  const ExpandedTextWidget({super.key, required this.text});
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Text(text);
-  }
-}
+
