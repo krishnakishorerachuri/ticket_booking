@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ticket_booking/screens/home_screen.dart';
 import 'package:ticket_booking/screens/search/search_screen.dart';
 
+import '../screens/profile/profile.dart';
 import '../screens/ticket/ticket_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -17,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
-    const Center(child: Text("Profile")),
+    const ProfileScreen()
   ];
 
   int _selectedIndex = 0;
